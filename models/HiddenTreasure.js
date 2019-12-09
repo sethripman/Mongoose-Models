@@ -1,26 +1,14 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  tignometerRating: {
+  fights: {
+    type: Number,
+    required: true
+  },
+  style: {
     type: String,
-    required: true
-  },
-  coporability: {
-    type: String,
-    required: true
-  },
-  slugsPresent: {
-    type: Boolean,
-    required: true
-  },
-  slugFlavor: {
-    type: String,
-    required: true
-  },
-  isSkurb: {
-    type: Boolean,
     required: true
   }
 });
 
-module.exports = mongoose.model('Bafmodad', schema);
+module.exports = mongoose.model('NakMuay', schema);
