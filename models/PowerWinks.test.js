@@ -35,22 +35,22 @@ describe('PowerWinks', () => {
 
   describe('emotionalContent', () => {
     it('requires an emotional content', () => {
-      const nakmuay = new NakMuay({
-        fights: 300
+      const powerwink = new PowerWinks({
+        numberOfWinks: 10
       });
 
-      const { errors } = nakmuay.validateSync();
-      expect(errors.style.message).toEqual('Path `style` is required.');
+      const { errors } = powerwink.validateSync();
+      expect(errors.emotionalContent.message).toEqual('Path `emotionalContent` is required.');
     });
 
-    it('should be of type Number', () => {
-      const nakmuay = new NakMuay({
-        fights: 300,
-        style: []
+    it('should be of type String', () => {
+      const powerwink = new PowerWinks({
+        numberOfWinks: 10,
+        emotionalContent: []
       });
 
-      const { errors } = nakmuay.validateSync();
-      expect(errors.style.message).toEqual('Cast to String failed for value "[]" at path "style"');
+      const { errors } = powerwink.validateSync();
+      expect(errors.emotionalContent.message).toEqual('Cast to String failed for value "[]" at path "emotionalContent"');
     });
   });
 });
