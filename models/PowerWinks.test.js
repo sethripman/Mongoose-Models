@@ -1,138 +1,56 @@
-const Bafmodad = require('./Bafmodad');
+const PowerWinks = require('./PowerWinks');
 
-describe('Bafmodad', () => {
-  describe('tignometer rating', () => {
-    it('requires a tignometer', () => {
-      const bafmodad = new Bafmodad({
-        coporability: 'slagnanimous',
-        slugsPresent: true,
-        slugFlavor: 'horrid banana',
-        isSkurb: false
+describe('PowerWinks', () => {
+
+  describe('numberOfWinks', () => {
+    it('requires a number of winks', () => {
+      const powerwink = new PowerWinks({
+        emotionalContent: 'Saucy and Unpredictable'
       });
 
-      const { errors } = bafmodad.validateSync();
-      expect(errors.tignometerRating.message).toEqual('Path `tignometerRating` is required.');
+      const { errors } = powerwink.validateSync();
+      expect(errors.numberOfWinks.message).toEqual('Path `numberOfWinks` is required.');
     });
 
-    it('should be of type String', () => {
-      const bafmodad = new Bafmodad({
-        tignometerRating: [],
-        coporability: 'slagnanimous',
-        slugsPresent: true,
-        slugFlavor: 'horrid banana',
-        isSkurb: false
+    it('should be of type Number', () => {
+      const powerwink = new PowerWinks({
+        numberOfWinks: [],
+        emotionalContent: 'Saucy and Unpredictable'
       });
-
-      const { errors } = bafmodad.validateSync();
-      expect(errors.tignometerRating.message).toEqual('Cast to String failed for value "[]" at path "tignometerRating"');
+      const { errors } = powerwink.validateSync();
+      expect(errors.numberOfWinks.message).toEqual('Cast to Number failed for value "[]" at path "numberOfWinks"');
     });
+
+    it('has a value greater than or equal to 1', () => {
+      const powerwink = new PowerWinks({
+        numberOfWinks: 0,
+        emotionalContent: 'Saucy and Unpredictable'
+      });
+          
+      const { errors } = powerwink.validateSync();
+      expect(errors.numberOfWinks.message).toEqual('Path `numberOfWinks` (0) is less than minimum allowed value (1).');
+    });
+
   });
 
-  describe('coporability', () => {
-    it('requires coporability', () => {
-      const bafmodad = new Bafmodad({
-        tignometerRating: 'type C',
-        slugsPresent: true,
-        slugFlavor: 'horrid banana',
-        isSkurb: false
+  describe('emotionalContent', () => {
+    it('requires an emotional content', () => {
+      const nakmuay = new NakMuay({
+        fights: 300
       });
 
-      const { errors } = bafmodad.validateSync();
-      expect(errors.coporability.message).toEqual('Path `coporability` is required.');
+      const { errors } = nakmuay.validateSync();
+      expect(errors.style.message).toEqual('Path `style` is required.');
     });
 
-    it('should be of type String', () => {
-      const bafmodad = new Bafmodad({
-        tignometerRating: 'type C',
-        coporability: {},
-        slugsPresent: true,
-        slugFlavor: 'horrid banana',
-        isSkurb: false
+    it('should be of type Number', () => {
+      const nakmuay = new NakMuay({
+        fights: 300,
+        style: []
       });
 
-      const { errors } = bafmodad.validateSync();
-      expect(errors.coporability.message).toEqual('Cast to String failed for value "{}" at path "coporability"');
-    });
-  });
-
-  describe('slugs present', () => {
-    it('requires a slugspresent boolean', () => {
-      const bafmodad = new Bafmodad({
-        tignometerRating: 'type C',
-        coporability: 'slagnanimous',
-        slugFlavor: 'horrid banana',
-        isSkurb: false
-      });
-
-      const { errors } = bafmodad.validateSync();
-      expect(errors.slugsPresent.message).toEqual('Path `slugsPresent` is required.');
-    });
-
-    it('should be of type Boolean', () => {
-      const bafmodad = new Bafmodad({
-        tignometerRating: 'type C',
-        coporability: 'slagnanimous',
-        slugsPresent: [],
-        slugFlavor: 'horrid banana',
-        isSkurb: false
-      });
-
-      const { errors } = bafmodad.validateSync();
-      expect(errors.slugsPresent.message).toEqual('Cast to Boolean failed for value "[]" at path "slugsPresent"');
-    });
-  });
-
-  describe('slugFlavor', () => {
-    it('requires the slugs to have a flavor', () => {
-      const bafmodad = new Bafmodad({
-        tignometerRating: 'type C',
-        coporability: 'slagnanimous',
-        slugsPresent: true,
-        isSkurb: false
-      });
-
-      const { errors } = bafmodad.validateSync();
-      expect(errors.slugFlavor.message).toEqual('Path `slugFlavor` is required.');
-    });
-
-    it('should be of type String', () => {
-      const bafmodad = new Bafmodad({
-        tignometerRating: 'type C',
-        coporability: 'slagnanimous',
-        slugsPresent: true,
-        slugFlavor: [],
-        isSkurb: false
-      });
-
-      const { errors } = bafmodad.validateSync();
-      expect(errors.slugFlavor.message).toEqual('Cast to String failed for value "[]" at path "slugFlavor"');
-    });
-  });
-
-  describe('is Skurb', () => {
-    it('requires a value for isSkurb', () => {
-      const bafmodad = new Bafmodad({
-        tignometerRating: 'type C',
-        coporability: 'slagnanimous',
-        slugsPresent: true,
-        slugFlavor: 'horrid banana'
-      });
-
-      const { errors } = bafmodad.validateSync();
-      expect(errors.isSkurb.message).toEqual('Path `isSkurb` is required.');
-    });
-
-    it('should be of type Boolean', () => {
-      const bafmodad = new Bafmodad({
-        tignometerRating: 'type C',
-        coporability: 'slagnanimous',
-        slugsPresent: true,
-        slugFlavor: 'horrid banana',
-        isSkurb: []
-      });
-
-      const { errors } = bafmodad.validateSync();
-      expect(errors.isSkurb.message).toEqual('Cast to Boolean failed for value "[]" at path "isSkurb"');
+      const { errors } = nakmuay.validateSync();
+      expect(errors.style.message).toEqual('Cast to String failed for value "[]" at path "style"');
     });
   });
 });
