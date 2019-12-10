@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
 const schema = new mongoose.Schema({
-  fights: {
-    type: Number,
+  hiddenInsideTree: {
+    type: Boolean,
     required: true
   },
-  style: {
-    type: String,
+  guardedByGhosts: {
+    type: Boolean,
     required: true
   }
 });
 
-module.exports = mongoose.model('NakMuay', schema);
+module.exports = mongoose.model('HiddenTreasure', schema);

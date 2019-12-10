@@ -1,45 +1,45 @@
-const NakMuay = require('./NakMuay');
+const HiddenTreasure = require('./HiddenTreasure');
 
-describe('NakMuay', () => {
+describe('HiddenTreasure', () => {
 
-  describe('fights', () => {
-    it('requires a number of fights', () => {
-      const nakmuay = new NakMuay({
-        style: 'Muay Femur'
+  describe('hiddenInsideTree', () => {
+    it('requires whether it was hidden inside a tree', () => {
+      const hiddenTreasure = new HiddenTreasure({
+        guardedByGhosts: true
       });
 
-      const { errors } = nakmuay.validateSync();
-      expect(errors.fights.message).toEqual('Path `fights` is required.');
+      const { errors } = hiddenTreasure.validateSync();
+      expect(errors.hiddenInsideTree.message).toEqual('Path `hiddenInsideTree` is required.');
     });
 
-    it('should be of type Number', () => {
-      const nakmuay = new NakMuay({
-        fights: [],
-        style: 'Muay Femur'
+    it('should be of type Boolean', () => {
+      const hiddenTreasure = new HiddenTreasure({
+        hiddenInsideTree: [],
+        guardedByGhosts: true
       });
-      const { errors } = nakmuay.validateSync();
-      expect(errors.fights.message).toEqual('Cast to Number failed for value "[]" at path "fights"');
+      const { errors } = hiddenTreasure.validateSync();
+      expect(errors.hiddenInsideTree.message).toEqual('Cast to Boolean failed for value "[]" at path "hiddenInsideTree"');
     });
   });
 
-  describe('style', () => {
-    it('requires a fighting style', () => {
-      const nakmuay = new NakMuay({
-        fights: 300
+  describe('guardedByGhosts', () => {
+    it('requires whether it is guarded by ghosts', () => {
+      const hiddenTreasure = new HiddenTreasure({
+        hiddenInsideTree: true
       });
 
-      const { errors } = nakmuay.validateSync();
-      expect(errors.style.message).toEqual('Path `style` is required.');
+      const { errors } = hiddenTreasure.validateSync();
+      expect(errors.guardedByGhosts.message).toEqual('Path `guardedByGhosts` is required.');
     });
 
-    it('should be of type Number', () => {
-      const nakmuay = new NakMuay({
-        fights: 300,
-        style: []
+    it('should be of type Boolean', () => {
+      const hiddenTreasure = new HiddenTreasure({
+        hiddenInsideTree: true,
+        guardedByGhosts: []
       });
 
-      const { errors } = nakmuay.validateSync();
-      expect(errors.style.message).toEqual('Cast to String failed for value "[]" at path "style"');
+      const { errors } = hiddenTreasure.validateSync();
+      expect(errors.guardedByGhosts.message).toEqual('Cast to Boolean failed for value "[]" at path "guardedByGhosts"');
     });
   });
 });
